@@ -3,6 +3,10 @@ import List from "./components/List";
 import Search from "./components/Search";
 import logo from "./assets/logo.png";
 import { useState } from "react";
+import {bounce} from 'react-animations'
+import styled, { keyframes } from 'styled-components';
+
+const Bounce=styled.div`animation: 2s ${keyframes`${bounce}`} infinite`;
 
 const title = "React Training";
 
@@ -59,8 +63,7 @@ function App() {
     <div>
       <nav>
         <div className="heading">
-          <h1>{title}</h1>
-          <img src={logo} />
+          <Bounce><h1>{title}</h1><img id="loading" src={logo} /></Bounce>
         </div>
         <Search searchText={searchText} onChange={handleChange}>
           Search
