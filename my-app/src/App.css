@@ -9,7 +9,7 @@ nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: rgb(8, 164, 254);
+    background-color: var(--foregroundColor)
   }
   
   nav img {
@@ -19,7 +19,7 @@ nav {
   
   .heading {
     display: flex;
-    align-items: baseline;
+    align-items: center;
   }
   
   .heading h1 {

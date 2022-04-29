@@ -3,6 +3,7 @@ import List from "./components/List";
 import Search from "./components/Search";
 import logo from "./assets/logo.png";
 import { useState } from "react";
+import usePersistence from "./hooks/usePersistence";
 import {bounce} from 'react-animations'
 import styled, { keyframes } from 'styled-components';
 
@@ -50,7 +51,10 @@ const listOfItems = [
 ];
 
 function App() {
-  const [searchText, setSearchText] = useState("");
+  const [searchText, setSearchText]: any = usePersistence(
+    "searchTerm",
+    "React"
+  );
 
   function handleChange(event: any) {
     setSearchText(event.target.value);
@@ -59,6 +63,7 @@ function App() {
   const filteredList = listOfItems.filter((item: any) =>
     item.title.toLowerCase().includes(searchText.toLowerCase())
   );
+  
   return (
     <div>
       <nav>
