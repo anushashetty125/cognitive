@@ -24,6 +24,11 @@ nav img {
   margin-right: 1rem;
 }
 
+a {
+  color: white;
+  text-decoration: none;
+}
+
 /*.rotate {
   animation: rotation 2s infinite linear;
 }
