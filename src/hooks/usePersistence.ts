@@ -20,5 +20,4 @@ function usePersistence(
   return [value, setValue];
 }
 
-
 export default usePersistence;

@@ -1,5 +1,5 @@
-import { StoryType } from "../types";
 import { useContext } from "react";
+import { StoryType } from "../types";
 import { AppContext } from "../App";
 
 type ItemProps = {
@@ -17,7 +17,9 @@ const Item = ({
       <td className="itemUrl">{url}</td>
       <td>{author}</td>
       <td>{num_comments}</td>
-      <td onClick={() => ctx?.onClickDelete(objectID)}>Delete</td>
+      <td className="deleteButton" onClick={() => ctx?.onClickDelete(objectID)}>
+        Delete
+      </td>
     </tr>
   );
 };

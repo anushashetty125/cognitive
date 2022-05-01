@@ -14,10 +14,11 @@ import axios from "axios";
 import { useDebounce } from "./hooks/useDebounce";
 import { StateType, StoryType, ActionType } from "./types";
 import { Link } from "react-router-dom";
+import "./spinner.css";
 
 export const title: string = "React Training";
 
-function storiesReducer(state: StateType, action: ActionType) {
+export function storiesReducer(state: StateType, action: ActionType) {
   switch (action.type) {
     case "SET_STORIES":
       return { data: action.payload.data, isError: false, isLoading: false };
@@ -84,13 +85,14 @@ function App(): JSX.Element {
   }
 
   const handleDeleteClick = useCallback((objectId: number) => {
+    console.log("Delete click captured", objectId);
     dispatchStories({ type: "REMOVE_STORY", payload: { id: objectId } });
   }, []);
 
   if (stories.isError) {
     return (
       <h1 style={{ marginTop: "10rem", color: " red" }}>
-        Something went wrong
+        Something went wrong...
       </h1>
     );
   }
@@ -115,7 +117,11 @@ function App(): JSX.Element {
         </Link>
       </nav>
       {stories.isLoading ? (
-        <h1 style={{ marginTop: "10rem" }}>Loading</h1>
+        <div style={{ marginTop: "10rem"}} className="spinner-container">
+          <h1 style={{ marginTop: "5rem" }}>Loading</h1>
+          <div className="loading-spinner">
+          </div>
+        </div>
       ) : (
         <AppContext.Provider value={{ onClickDelete: handleDeleteClick }}>
           <List listOfItems={stories.data} />
